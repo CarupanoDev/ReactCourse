@@ -1,30 +1,17 @@
-import React, { Component } from "react";
+import { useState } from "react";
 
-interface AppState{
-    isToogleOn: Boolean
-}
+const Toogle = () => {
+  const [toogle, setToogle] = useState(false)
 
-class Toogle extends Component<{}, AppState>{
-    constructor( props: object ){
-        super(props);
-        this.state = {isToogleOn: true};
+  const handleClick = () =>{
+    setToogle(prevState => !prevState)
+  }
 
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick = () => {
-        this.setState(prevState => ({
-            isToogleOn: !prevState.isToogleOn
-        }))
-    }
-
-      render() {
-        return (
-          <button onClick={this.handleClick}>
-            {this.state.isToogleOn ? 'ON' : 'OFF'}
-          </button>
-        );
-      }
+  return (
+    <button onClick={handleClick}>
+      {toogle ? 'ON' : 'OFF'}
+    </button>
+  );
 }
 
 export default Toogle;
